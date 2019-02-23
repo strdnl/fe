@@ -20,11 +20,6 @@ var xorKey = 129; /// you can have other numeric values also.
     }
 }
 
-
-var decrypted = CryptoJS.AES.decrypt(encrypted, myPassword);
-
-document.getElementById("demo3").innerHTML = 
-
 function geturl(){
     var mystring = document.getElementById("urlinput").value;
     var url = myString;
@@ -65,7 +60,7 @@ function send_request(url) {
 }
 
 function shorturl(){
-    var longurl = encrypt();
+    var longurl = geturl();
     genhash();
     send_request(longurl);
 }
