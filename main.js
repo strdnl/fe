@@ -47,8 +47,8 @@ function send_request(url) {
 function shorturl(){
     var longurl = geturl();
     genhash();
-    var longurl = encrypt()
-    send_request(longurl);
+    var longurl2 = encrypt(longurl)
+    send_request(longurl2);
 }
 
 var hashh = window.location.hash.substr(1)
