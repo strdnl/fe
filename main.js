@@ -1,5 +1,25 @@
 var endpoint = "http://www.jsonstore.io/3f372cbb892d082a509f9484d4ea8f7426b30954d1a6cb2255e0a19402bbf419";
 
+function encrypt(){
+password = document.getElementById('urlinput').value;
+var xorKey = 129; /// you can have other numeric values also.
+    var result = "";
+    for (i = 0; i < password.length; ++i) {
+        result += String.fromCharCode(xorKey ^ password.charCodeAt(i));
+        return result;
+    }
+}
+
+function decrypt(url){
+password = url;
+var xorKey = 129; /// you can have other numeric values also.
+    var result = "";
+    for (i = 0; i < password.length; ++i) {
+        result += String.fromCharCode(xorKey ^ password.charCodeAt(i));
+        return result;
+    }
+}
+
 function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
@@ -38,7 +58,7 @@ function send_request(url) {
 }
 
 function shorturl(){
-    var longurl = geturl();
+    var longurl = encrypt();
     genhash();
     send_request(longurl);
 }
@@ -50,6 +70,7 @@ if (window.location.hash != "") {
         data = data["result"];
 
         if (data != null) {
+            decrypt(data);
             window.location.href = data;
         }
 
