@@ -24,8 +24,8 @@ function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
     if(!protocol_ok){
-        var codex = CryptoJS.AES.encrypt(url, "bastard");
-        return codex;
+       return url;
+        
         }else{
             return url;
         }
@@ -47,7 +47,9 @@ function genhash(){
 }
 
 function send_request(url) {
-    this.url = url;
+     var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
+     
+    this.url = codex;
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
@@ -70,7 +72,7 @@ if (window.location.hash != "") {
         data = data["result"];
 
         if (data != null) {
-            var decrypted = CryptoJS.AES.decrypt(data, "bastard");
+            var decrypted = CryptoJS.AES.decrypt(data, window.location.hash.substr(1));
             window.location.href = decrypted.toString(CryptoJS.enc.Utf8);
         }
 
