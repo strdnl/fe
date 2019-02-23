@@ -54,7 +54,7 @@ function send_request(url) {
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
-        'data': JSON.stringify codex,
+        'data': JSON.stringify (this.url),
         'dataType': 'json',
         'contentType': 'application/json; charset=utf-8'
 })
