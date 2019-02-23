@@ -28,8 +28,8 @@ function genhash(){
 }
 
 function send_request(url) {
-     var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
-     this.url = codex;
+    this.url = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
+    
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
