@@ -1,8 +1,7 @@
 var endpoint = "http://www.jsonstore.io/3f372cbb892d082a509f9484d4ea8f7426b30954d1a6cb2255e0a19402bbf419";
-var codex = CryptoJS.AES(...);
                     
 function encrypt(url){
-var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
+var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1)).toString();
     return codex;
 }
 
