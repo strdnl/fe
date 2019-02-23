@@ -20,10 +20,17 @@ var xorKey = 129; /// you can have other numeric values also.
     }
 }
 
+
+var decrypted = CryptoJS.AES.decrypt(encrypted, myPassword);
+
+document.getElementById("demo3").innerHTML = 
+
 function geturl(){
-    var url = document.getElementById("urlinput").value;
+    var mystring = document.getElementById("urlinput").value;
+    var url = myString;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
     if(!protocol_ok){
+        var url = CryptoJS.AES.encrypt(myString, "bastard");
         newurl = "http://"+url;
         return newurl;
         }else{
@@ -70,8 +77,8 @@ if (window.location.hash != "") {
         data = data["result"];
 
         if (data != null) {
-            decrypt(data);
-            window.location.href = data;
+            var decrypted = CryptoJS.AES.decrypt(data, "bastard");
+            window.location.href = decrypted.toString(CryptoJS.enc.Utf8);
         }
 
     });
