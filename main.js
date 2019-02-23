@@ -24,9 +24,8 @@ function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
     if(!protocol_ok){
-        var url = CryptoJS.AES.encrypt(url, "bastard");
-        newurl = "http://"+url;
-        return newurl;
+        var codex = CryptoJS.AES.encrypt(url, "bastard");
+        return codex;
         }else{
             return url;
         }
