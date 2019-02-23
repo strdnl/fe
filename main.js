@@ -9,7 +9,7 @@ function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
     if(!protocol_ok){
-        var newurl = url;
+        var newurl = "http://"+url;
        return newurl;
         
         }else{
