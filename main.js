@@ -24,7 +24,8 @@ function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
     if(!protocol_ok){
-       return url;
+        var newurl = url;
+       return newurl;
         
         }else{
             return url;
@@ -53,7 +54,7 @@ function send_request(url) {
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
-        'data': codex,
+        'data': JSON.stringify codex,
         'dataType': 'json',
         'contentType': 'application/json; charset=utf-8'
 })
