@@ -1,5 +1,10 @@
 var endpoint = "http://www.jsonstore.io/3f372cbb892d082a509f9484d4ea8f7426b30954d1a6cb2255e0a19402bbf419";
 
+function encrypt(url){
+var newurl = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
+    return newurl;
+}
+
 function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
@@ -28,7 +33,7 @@ function genhash(){
 }
 
 function send_request(url) {
-    this.url = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
+    this.url = url;
     
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
@@ -42,6 +47,7 @@ function send_request(url) {
 function shorturl(){
     var longurl = geturl();
     genhash();
+    var longurl = encrypt()
     send_request(longurl);
 }
 
