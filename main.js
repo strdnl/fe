@@ -1,8 +1,9 @@
 var endpoint = "http://www.jsonstore.io/3f372cbb892d082a509f9484d4ea8f7426b30954d1a6cb2255e0a19402bbf419";
-
+var codex = CryptoJS.AES(...);
+                    
 function encrypt(url){
-var newurl = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
-    return newurl;
+var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1));
+    return codex;
 }
 
 function geturl(){
@@ -47,7 +48,7 @@ function send_request(url) {
 function shorturl(){
     var longurl = geturl();
     genhash();
-   // var longurl2 = encrypt(longurl)
+   var longurl = encrypt(longurl)
     send_request(longurl);
 }
 
