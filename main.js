@@ -21,11 +21,10 @@ var xorKey = 129; /// you can have other numeric values also.
 }
 
 function geturl(){
-    var mystring = document.getElementById("urlinput").value;
-    var url = myString;
+    var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
     if(!protocol_ok){
-        var url = CryptoJS.AES.encrypt(myString, "bastard");
+        var url = CryptoJS.AES.encrypt(url, "bastard");
         newurl = "http://"+url;
         return newurl;
         }else{
