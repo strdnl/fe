@@ -57,6 +57,7 @@ function shorturl(){
 }
 
 var hashh = window.location.hash.substr(1)
+var cunt = " ";
 
 if (window.location.hash != "") {
     var cunt = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
