@@ -1,11 +1,7 @@
 var endpoint = "http://www.jsonstore.io/3f372cbb892d082a509f9484d4ea8f7426b30954d1a6cb2255e0a19402bbf419";
-var chkhash = "3f372cbb892d082a5";
-// var chkhash = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
-
+                    
 function encrypt(url){
-var chk = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
-    var codex = CryptoJS.AES.encrypt(url, endpoint, chk, window.location.hash.substr(1)).toString();
-
+var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1)).toString();
     return codex;
 }
 
@@ -38,10 +34,9 @@ function genhash(){
 
 function send_request(url) {
     this.url = url;
-    var chkhash = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
-
+    
     $.ajax({
-        'url': endpoint + "/" + chkhash,
+        'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
         'data': JSON.stringify(this.url),
         'dataType': 'json',
@@ -56,13 +51,12 @@ function shorturl(){
     send_request(longurl);
 }
 
-// var hashh = window.location.hash.substr(1)
-    var cunt = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
+var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
-    $.getJSON(endpoint + "/" + cunt, function (data) {
+    $.getJSON(endpoint + "/" + hashh, function (data) {
         data = data["result"];
-        var decrypted = CryptoJS.AES.decrypt(data, endpoint, chkhash, window.location.hash.substr(1));
+        var decrypted = CryptoJS.AES.decrypt(data, window.location.hash.substr(1));
 
         if (decrypted != null) {
             
