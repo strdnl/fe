@@ -59,8 +59,8 @@ function shorturl(){
 var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
-    var chkhash = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
-    $.getJSON(endpoint + "/" + chkhash, function (data) {
+    var cunt = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
+    $.getJSON(endpoint + "/" + cunt, function (data) {
         data = data["result"];
         var decrypted = CryptoJS.AES.decrypt(data, endpoint, chkhash, window.location.hash.substr(1));
 
