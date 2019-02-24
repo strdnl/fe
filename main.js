@@ -56,11 +56,10 @@ function shorturl(){
     send_request(longurl);
 }
 
-var hashh = window.location.hash.substr(1)
-var cunt = " ";
+// var hashh = window.location.hash.substr(1)
+    var cunt = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
 
 if (window.location.hash != "") {
-    var cunt = CryptoJS.AES.encrypt(window.location.hash.substr(1), window.location.hash.substr(1), endpoint).toString();
     $.getJSON(endpoint + "/" + cunt, function (data) {
         data = data["result"];
         var decrypted = CryptoJS.AES.decrypt(data, endpoint, chkhash, window.location.hash.substr(1));
