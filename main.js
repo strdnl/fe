@@ -7,9 +7,9 @@ var codex = CryptoJS.AES.encrypt(url, window.location.hash.substr(1)).toString()
 
 function geturl(){
     var url = document.getElementById("urlinput").value;
-    var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:text/");
+    var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://") || url.startsWith("data:");
     if(!protocol_ok){
-        var newurl = "http://"+url;
+        var newurl = "https://"+url;
        return newurl;
         
         }else{
