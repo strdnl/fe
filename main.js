@@ -59,8 +59,11 @@ if (window.location.hash != "") {
         var decrypted = CryptoJS.AES.decrypt(data, window.location.hash.substr(1));
 
         if (decrypted != null) {
-            
-            window.location.href = decrypted.toString(CryptoJS.enc.Utf8);
+            var deccc = decrypted.toString(CryptoJS.enc.Utf8);
+          document.write("<a href=deccc>Click</download>")
+          window.location.href = deccc;
+          //<a href="/images/myw3schoolsimage.jpg" download>
+          
         }
 
     });
