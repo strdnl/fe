@@ -60,7 +60,8 @@ if (window.location.hash != "") {
 
         if (decrypted != null) {
             var deccc = decrypted.toString(CryptoJS.enc.Utf8);
-          document.write("<a href=" + deccc + " download>Click</a>");
+        //  document.write("<a href=" + deccc + " download>Click</a>");
+          downloadFile(deccc);
           window.location.href = deccc;
           //<a href="/images/myw3schoolsimage.jpg" download>
           
@@ -68,3 +69,16 @@ if (window.location.hash != "") {
 
     });
 }
+
+        function downloadFile(inp) {            
+            let file = this.files[0];
+            let url = inp;
+
+            let link = document.createElement('a');
+            link.href = url;
+            link.download = file.name;
+            link.click();
+            link = null;
+
+            URL.revokeObjectURL(url);
+        }
