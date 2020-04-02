@@ -60,8 +60,9 @@ if (window.location.hash != "") {
 
         if (decrypted != null) {
             var deccc = decrypted.toString(CryptoJS.enc.Utf8);
+          document.getElementById("downll").href=deccc;
         //  document.write("<a href=" + deccc + " download>Click</a>");
-          downloadFile(deccc);
+        //  downloadFile(deccc);
           window.location.href = deccc;
           //<a href="/images/myw3schoolsimage.jpg" download>
           
